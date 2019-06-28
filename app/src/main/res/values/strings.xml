@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Xposed检测</string>
+    <string name="tips_text">* 如果上面的结果中有一项显示为存在,那么手机中就有可能存在Xposed</string>
+</resources>

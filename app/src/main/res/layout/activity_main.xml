@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:padding="5dp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:background="@color/colorBlack"
+        android:textColor="@color/colorGreen"
+        android:layout_width="match_parent"
+        android:layout_weight="9"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_tips"
+        android:text="@string/tips_text"
+        android:textColor="@color/colorRed"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
