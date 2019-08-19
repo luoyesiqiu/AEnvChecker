@@ -1,4 +1,4 @@
-package com.luoye.xposedcheck;
+package com.luoye.envcheck;
 
 import org.junit.Test;
 

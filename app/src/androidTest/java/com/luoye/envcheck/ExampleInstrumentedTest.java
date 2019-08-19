@@ -1,4 +1,4 @@
-package com.luoye.xposedcheck;
+package com.luoye.envcheck;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

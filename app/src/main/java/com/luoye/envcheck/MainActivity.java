@@ -1,10 +1,12 @@
-package com.luoye.xposedcheck;
+package com.luoye.envcheck;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.luoye.xposedcheck.util.Checker;
+import com.luoye.envcheck.interfaces.Checker;
+import com.luoye.envcheck.util.RootChecker;
+import com.luoye.envcheck.util.XposedChecker;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,11 +16,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView tv = findViewById(R.id.tv_msg);
-        Checker checker = new Checker();
+        XposedChecker xposedChecker = new XposedChecker();
         StringBuilder content = new StringBuilder();
-        content.append("> Xposed加载类 : " + (checker.checkXposedClass() ? "存在" : "不存在") + "\n");
-        content.append("> Xposed日志 : " + (checker.checkXposedLog() ? "存在" : "不存在") + "\n");
-        content.append("> XposedBridge.jar : " + (checker.checkXposedBridgeJar() ? "存在" : "不存在") + "\n");
+        content.append("> Xposed可疑项 : " + xposedChecker.getResult() + "\n");
+        Checker rootChecker = new RootChecker();
+        content.append("> Root可疑项 : " + rootChecker.getResult() + "\n");
         tv.setText(content);
     }
 }

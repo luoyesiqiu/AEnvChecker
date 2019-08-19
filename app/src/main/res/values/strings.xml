@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Xposed检测</string>
-    <string name="tips_text">* 如果上面的结果中有一项显示为“存在”,那么手机中就有可能存在Xposed</string>
+    <string name="app_name">Android环境检测</string>
+    <string name="tips_text">*@luoyesiqiu</string>
 </resources>
