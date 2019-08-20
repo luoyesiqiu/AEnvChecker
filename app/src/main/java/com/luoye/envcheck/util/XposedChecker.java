@@ -1,5 +1,6 @@
 package com.luoye.envcheck.util;
 
+import com.luoye.envcheck.bean.Pair;
 import com.luoye.envcheck.interfaces.Checker;
 
 import java.io.File;
@@ -53,7 +54,7 @@ public class XposedChecker implements Checker {
     }
 
     @Override
-    public String getResult() {
+    public Pair getResult() {
         boolean[] results = {checkXposedClass(), checkXposedBridgeJar(), checkXposedLog()};
         int count = 0;
         for (boolean ret : results) {
@@ -63,6 +64,6 @@ public class XposedChecker implements Checker {
         }
 
 
-        return String.format("[%d/%d]", count, results.length);
+        return new Pair(count, results.length);
     }
 }
