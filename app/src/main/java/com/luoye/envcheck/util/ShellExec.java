@@ -32,21 +32,8 @@ public class ShellExec {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (err != null) {
-                try {
-                    err.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            IOUtils.tryClose(in);
+            IOUtils.tryClose(err);
         }
         return sb.toString();
     }

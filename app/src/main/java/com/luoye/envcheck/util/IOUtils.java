@@ -1,6 +1,7 @@
 package com.luoye.envcheck.util;
 
 import java.io.BufferedReader;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -19,14 +20,18 @@ public class IOUtils {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(bufferedReader != null){
-                try {
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            tryClose(bufferedReader);
         }
         return list;
+    }
+
+    public static void tryClose(Closeable closeable){
+        if(closeable!=null){
+            try {
+                closeable.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

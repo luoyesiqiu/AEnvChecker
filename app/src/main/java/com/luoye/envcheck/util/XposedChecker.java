@@ -63,7 +63,6 @@ public class XposedChecker implements Checker {
             }
         }
 
-
         return new Pair(count, results.length);
     }
 }
