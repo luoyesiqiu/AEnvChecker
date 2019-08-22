@@ -32,6 +32,7 @@ public class RootChecker implements Checker {
         int propCount = 0;
         for (String key : rootPropKey) {
             String val = ShellExec.exec("getprop " + key);
+            val= val.trim();
             if (val != null && val.equals("0")) {
                 propCount++;
             }
