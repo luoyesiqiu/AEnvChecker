@@ -1,5 +1,7 @@
 package com.luoye.envcheck.util;
 
+import android.os.Process;
+
 import com.luoye.envcheck.bean.Pair;
 import com.luoye.envcheck.interfaces.Checker;
 
@@ -9,7 +11,20 @@ public class XposedChecker implements Checker {
     private static final String TAG = XposedChecker.class.getSimpleName();
 
     /**
-     * 检测内存中是否加载了Xposed
+     * 检测是否加载了Xposed库
+     *
+     * @return
+     */
+    private boolean checkXposedLibs() {
+        String file = String.format("/proc/%d/maps", Process.myPid());
+        String text = IOUtils.readFile(file);
+        if(text.contains("xposed")){
+            return true;
+        }
+        return false;
+    }
+    /**
+     * 检测内存中是否加载了Xposed API
      *
      * @return
      */
@@ -55,7 +70,7 @@ public class XposedChecker implements Checker {
 
     @Override
     public Pair getResult() {
-        boolean[] results = {checkXposedClass(), checkXposedBridgeJar(), checkXposedLog()};
+        boolean[] results = {checkXposedLibs(),checkXposedClass(), checkXposedBridgeJar(), checkXposedLog()};
         int count = 0;
         for (boolean ret : results) {
             if (ret) {

@@ -1,5 +1,6 @@
 #include <jni.h>
 #include <string>
+#include <elf.h>
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_luoye_xposedcheck_MainActivity_stringFromJNI(
