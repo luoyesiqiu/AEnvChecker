@@ -17,7 +17,7 @@ public class RootChecker implements Checker {
     private String[] binPaths = {"/system/bin/", "/system/xbin/"};
     private String[] suBinPaths = {binPaths[0] + SU_NAME, binPaths[1] + SU_NAME};
     private String[] rootPropKey = {"ro.secure", "ro.adb.secure"};
-
+    private String rootAccessPropKey = "persist.sys.root_access";
     private boolean checkSuBin() {
         int suCount = 0;
         for (String suPath : suBinPaths) {
@@ -36,6 +36,11 @@ public class RootChecker implements Checker {
             if (val != null && val.equals("0")) {
                 propCount++;
             }
+        }
+        String val = ShellExec.exec("getprop " + rootAccessPropKey);
+        val= val.trim();
+        if (val != null && !val.equals("0")) {
+            propCount++;
         }
         return propCount != 0;
     }
